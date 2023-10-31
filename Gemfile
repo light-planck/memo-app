@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 gem 'puma'
 gem 'sinatra'
+gem 'sinatra-contrib'
 gem 'webrick'
 
 # For plain Ruby scripts
