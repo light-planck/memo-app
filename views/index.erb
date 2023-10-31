@@ -2,10 +2,14 @@
 <html>
   <head>
     <title>Top</title>
+    <link rel="stylesheet" type="text/css" href="/styles/index.css">
   </head>
   <body>
-    <h1>メモアプリ</h1>
-    <a href="/new"><button>追加</button></a>
+    <div class="header-container">
+      <h1>メモアプリ</h1>
+      <a href="/new"><button class="button">追加</button></a>
+    </div>
+
     <% if @memos %>
       <ul>
         <% @memos.each do |memo, idx| %>
