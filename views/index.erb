@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Top</title>
+  </head>
+  <body>
+    <h1>メモアプリ</h1>
+    <button>追加</button>
+    <% if @memos %>
+      <ul>
+        <% @memos.each do |memo, idx| %>
+          <li><%= memo idx+1 %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </body>
+</html>
