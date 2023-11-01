@@ -15,8 +15,8 @@
         <div class="form">
           <% if @memos %>
             <ul>
-              <% @memos.each do |memo, idx| %>
-                <li><%= memo idx+1 %></li>
+              <% @memos.each do |memo| %>
+                <li><%= memo[:title] %></li>
               <% end %>
             </ul>
           <% end %>
