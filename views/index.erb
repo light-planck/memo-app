@@ -2,20 +2,26 @@
 <html>
   <head>
     <title>Top</title>
+    <link rel="stylesheet" type="text/css" href="/styles/layout.css">
     <link rel="stylesheet" type="text/css" href="/styles/index.css">
   </head>
   <body>
-    <div class="header-container">
-      <h1>メモアプリ</h1>
-      <a href="/new"><button class="button">追加</button></a>
+    <div class="container">
+      <div class="header-container">
+        <h1>メモアプリ</h1>
+        <a href="/new" class="block"><button class="button">追加</button></a>
+      </div>
+      <div class="form-container">
+        <div class="form">
+          <% if @memos %>
+            <ul>
+              <% @memos.each do |memo, idx| %>
+                <li><%= memo idx+1 %></li>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
+      </div>
     </div>
-
-    <% if @memos %>
-      <ul>
-        <% @memos.each do |memo, idx| %>
-          <li><%= memo idx+1 %></li>
-        <% end %>
-      </ul>
-    <% end %>
   </body>
 </html>
