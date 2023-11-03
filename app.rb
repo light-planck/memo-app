@@ -52,9 +52,9 @@ patch '/memos/:id' do
           else
             []
           end
-  memo = memos.find { |memo| memo['id'] == params[:id].to_i }
-  memo['title'] = params[:title]
-  memo['content'] = params[:content]
+  updated_memo = memos.find { |memo| memo['id'] == params[:id].to_i }
+  updated_memo['title'] = params[:title]
+  updated_memo['content'] = params[:content]
   File.open('data/memos.json', 'w') { |f| f.write(memos.to_json) }
   redirect to("/memos/#{params[:id]}")
 end
