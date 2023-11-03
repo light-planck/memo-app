@@ -23,6 +23,17 @@ get '/memos/:id' do
   erb :show
 end
 
+post '/memos/:id/delete' do
+  memos = if File.exist?('data/memos.json') && !File.empty?('data/memos.json')
+            JSON.parse(File.read('data/memos.json'))
+          else
+            []
+          end
+  memos.delete_if { |memo| memo['id'] == params[:id].to_i }
+  File.open('data/memos.json', 'w') { |f| f.write(memos.to_json) }
+  redirect to('/')
+end
+
 get '/new' do
   erb :new
 end
