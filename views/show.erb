@@ -1,10 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Memo</title>
+    <title>Show Memo</title>
+    <link rel="stylesheet" type="text/css" href="/styles/layout.css">
+    <link rel="stylesheet" type="text/css" href="/styles/show.css">
   </head>
   <body>
-    <h1><%= @memo['title'] %></h1>
-    <p><%= @memo['content'] %></p>
+    <div class="container">
+      <div class="header-container">
+        <h1>メモアプリ</h1>
+      </div>
+      <div class="form-container">
+        <div class="form">
+          <h2><%= @memo['title'] %></h2>
+          <p><%= @memo['content'] %></p>
+        </div>
+      </div>
+      <div class="button-container">
+        <form>
+          <input type="submit" class="button button--edit" value="変更">
+        </form>
+        <form>
+          <input type="submit" class="button button--delete" value="削除"/>
+        </form>
+      </div>
+    </div>
   </body>
 </html>
