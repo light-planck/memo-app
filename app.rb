@@ -25,6 +25,16 @@ get '/memos/:id' do
   erb :show
 end
 
+get '/memos/:id/edit' do
+  memos = if File.exist?('data/memos.json') && !File.empty?('data/memos.json')
+            JSON.parse(File.read('data/memos.json'))
+          else
+            []
+          end
+  @memo = memos.find { |memo| memo['id'] == params[:id].to_i }
+  erb :edit
+end
+
 delete '/memos/:id' do
   memos = if File.exist?('data/memos.json') && !File.empty?('data/memos.json')
             JSON.parse(File.read('data/memos.json'))
@@ -34,6 +44,19 @@ delete '/memos/:id' do
   memos.delete_if { |memo| memo['id'] == params[:id].to_i }
   File.open('data/memos.json', 'w') { |f| f.write(memos.to_json) }
   redirect to('/')
+end
+
+patch '/memos/:id' do
+  memos = if File.exist?('data/memos.json') && !File.empty?('data/memos.json')
+            JSON.parse(File.read('data/memos.json'))
+          else
+            []
+          end
+  memo = memos.find { |memo| memo['id'] == params[:id].to_i }
+  memo['title'] = params[:title]
+  memo['content'] = params[:content]
+  File.open('data/memos.json', 'w') { |f| f.write(memos.to_json) }
+  redirect to("/memos/#{params[:id]}")
 end
 
 get '/new' do
