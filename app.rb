@@ -2,11 +2,14 @@
 
 require 'sinatra'
 require 'sinatra/reloader'
-
-$memos = []
+require 'json'
 
 get '/' do
-  @memos = $memos
+  @memos = if File.exist?('data/memos.json') && !File.empty?('data/memos.json')
+             JSON.parse(File.read('data/memos.json'))
+           else
+             []
+           end
   erb :index
 end
 
@@ -15,7 +18,14 @@ get '/new' do
 end
 
 post '/memos' do
-  new_memo = { title: params[:title], content: params[:content] }
-  $memos << new_memo
+  memos = if File.exist?('data/memos.json') && !File.empty?('data/memos.json')
+            JSON.parse(File.read('data/memos.json'))
+          else
+            []
+          end
+  new_id = memos.empty? ? 1 : memos.last['id'] + 1
+  new_memo = { id: new_id, title: params[:title], content: params[:content] }
+  memos << new_memo
+  File.open('data/memos.json', 'w') { |f| f.write(memos.to_json) }
   redirect to('/')
 end
