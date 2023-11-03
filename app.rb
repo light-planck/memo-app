@@ -13,6 +13,16 @@ get '/' do
   erb :index
 end
 
+get '/memos/:id' do
+  memos = if File.exist?('data/memos.json') && !File.empty?('data/memos.json')
+            JSON.parse(File.read('data/memos.json'))
+          else
+            []
+          end
+  @memo = memos.find { |memo| memo['id'] == params[:id].to_i }
+  erb :show
+end
+
 get '/new' do
   erb :new
 end
