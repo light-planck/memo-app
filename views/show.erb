@@ -20,7 +20,8 @@
         <form>
           <input type="submit" class="button button--edit" value="変更">
         </form>
-        <form method="post" action="/memos/<%= @memo['id'] %>/delete">
+        <form method="post" action="/memos/<%= @memo['id'] %>">
+          <input type="hidden" name="_method" value="delete">
           <input type="submit" class="button button--delete" value="削除"/>
         </form>
       </div>

@@ -4,6 +4,8 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'json'
 
+set :method_override, true
+
 get '/' do
   @memos = if File.exist?('data/memos.json') && !File.empty?('data/memos.json')
              JSON.parse(File.read('data/memos.json'))
@@ -23,7 +25,7 @@ get '/memos/:id' do
   erb :show
 end
 
-post '/memos/:id/delete' do
+delete '/memos/:id' do
   memos = if File.exist?('data/memos.json') && !File.empty?('data/memos.json')
             JSON.parse(File.read('data/memos.json'))
           else
