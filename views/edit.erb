@@ -13,8 +13,8 @@
       <div class="form-container">
         <form class="form" method="post" action="/memos/<%= @memo['id'] %>">
           <input type="hidden" name="_method" value="patch">
-          <input type="text" id="title" name="title" value="<%= @memo['title'] %>">
-          <textarea id="content" name="content"><%= @memo['content'] %></textarea>
+          <input type="text" id="title" name="title" value="<%= h(@memo['title']) %>">
+          <textarea id="content" name="content"><%= h(@memo['content']) %></textarea>
           <input type="submit" class="button" value="変更"/>
         </form>
       </div>

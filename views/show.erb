@@ -12,8 +12,8 @@
       </div>
       <div class="form-container">
         <div class="form">
-          <h2><%= @memo['title'] %></h2>
-          <p><%= @memo['content'] %></p>
+          <h2><%= h(@memo['title']) %></h2>
+          <p><%= h(@memo['content']) %></p>
         </div>
       </div>
       <div class="button-container">

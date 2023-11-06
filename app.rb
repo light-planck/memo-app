@@ -6,6 +6,12 @@ require 'json'
 
 set :method_override, true
 
+helpers do
+  def h(text)
+    Rack::Utils.escape_html(text)
+  end
+end
+
 get '/' do
   @memos = if File.exist?('data/memos.json') && !File.empty?('data/memos.json')
              JSON.parse(File.read('data/memos.json'))
