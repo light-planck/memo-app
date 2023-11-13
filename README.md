@@ -5,7 +5,11 @@
 ### git clone
 
 ```bash
-git clone https://github.com/light-planck/memo-app.git && git checkout development
+git clone https://github.com/light-planck/memo-app.git
+
+cd memo_app
+
+git checkout development
 ```
 
 ### セットアップ
