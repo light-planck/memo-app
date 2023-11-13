@@ -7,7 +7,7 @@
 ```bash
 git clone https://github.com/light-planck/memo-app.git
 
-cd memo_app
+cd memo-app
 
 git checkout development
 ```
