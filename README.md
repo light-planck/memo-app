@@ -2,14 +2,19 @@
 
 ## 起動方法
 
-```bash
-git clone https://github.com/light-planck/memo-app.git
-git checkout development
-```
+### git clone
 
 ```bash
-bundle install
+git clone https://github.com/light-planck/memo-app.git && git checkout development
 ```
+
+### セットアップ
+
+```bash
+./setup.sh
+```
+
+### 起動
 
 ```bash
 bundle exec ruby app.rb
