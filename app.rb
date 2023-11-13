@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'securerandom'
 require 'sinatra'
 require 'sinatra/reloader'
 require 'json'
@@ -23,26 +24,26 @@ end
 
 get '/memos/:id' do
   memos = load_memos
-  @memo = memos.find { |memo| memo['id'] == params[:id].to_i }
+  @memo = memos.find { |memo| memo['id'] == params[:id] }
   erb :show
 end
 
 get '/memos/:id/edit' do
   memos = load_memos
-  @memo = memos.find { |memo| memo['id'] == params[:id].to_i }
+  @memo = memos.find { |memo| memo['id'] == params[:id] }
   erb :edit
 end
 
 delete '/memos/:id' do
   memos = load_memos
-  memos.delete_if { |memo| memo['id'] == params[:id].to_i }
+  memos.delete_if { |memo| memo['id'] == params[:id] }
   File.open('data/memos.json', 'w') { |f| f.write(memos.to_json) }
   redirect to('/')
 end
 
 patch '/memos/:id' do
   memos = load_memos
-  updated_memo = memos.find { |memo| memo['id'] == params[:id].to_i }
+  updated_memo = memos.find { |memo| memo['id'] == params[:id] }
   updated_memo['title'] = params[:title]
   updated_memo['content'] = params[:content]
   write_memos(memos)
@@ -55,7 +56,7 @@ end
 
 post '/memos' do
   memos = load_memos
-  new_id = memos.empty? ? 1 : memos.last['id'] + 1
+  new_id = SecureRandom.uuid
   new_memo = { id: new_id, title: params[:title], content: params[:content] }
   memos << new_memo
   write_memos(memos)
