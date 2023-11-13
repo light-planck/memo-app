@@ -45,7 +45,7 @@ patch '/memos/:id' do
   updated_memo = memos.find { |memo| memo['id'] == params[:id].to_i }
   updated_memo['title'] = params[:title]
   updated_memo['content'] = params[:content]
-  File.open('data/memos.json', 'w') { |f| f.write(memos.to_json) }
+  write_memos(memos)
   redirect to("/memos/#{params[:id]}")
 end
 
@@ -58,7 +58,7 @@ post '/memos' do
   new_id = memos.empty? ? 1 : memos.last['id'] + 1
   new_memo = { id: new_id, title: params[:title], content: params[:content] }
   memos << new_memo
-  File.open('data/memos.json', 'w') { |f| f.write(memos.to_json) }
+  write_memos(memos)
   redirect to('/')
 end
 
@@ -68,4 +68,8 @@ def load_memos
   else
     []
   end
+end
+
+def write_memos(memos)
+  File.open('data/memos.json', 'w') { |f| f.write(memos.to_json) }
 end
