@@ -13,6 +13,10 @@ helpers do
 end
 
 get '/' do
+  redirect to('/memos')
+end
+
+get '/memos' do
   @memos = if File.exist?('data/memos.json') && !File.empty?('data/memos.json')
              JSON.parse(File.read('data/memos.json'))
            else
