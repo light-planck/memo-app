@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Top</title>
+    <link rel="stylesheet" type="text/css" href="/styles/layout.css">
+    <link rel="stylesheet" type="text/css" href="/styles/index.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header-container">
+        <h1>メモアプリ</h1>
+        <a href="/new" class="block"><button class="button">追加</button></a>
+      </div>
+      <div class="form-container">
+        <div class="form">
+          <% if @memos %>
+            <ul>
+              <% @memos.each do |memo| %>
+                <a href="/memos/<%= memo['id'] %>">
+                  <li><%= h(memo['title']) %></li>
+                </a>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

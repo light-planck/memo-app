@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Show Memo</title>
+    <link rel="stylesheet" type="text/css" href="/styles/layout.css">
+    <link rel="stylesheet" type="text/css" href="/styles/show.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header-container">
+        <h1>メモアプリ</h1>
+      </div>
+      <div class="form-container">
+        <div class="form">
+          <h2><%= h(@memo['title']) %></h2>
+          <p><%= h(@memo['content']) %></p>
+        </div>
+      </div>
+      <div class="button-container">
+        <form method="get" action="/memos/<%= @memo['id'] %>/edit">
+          <input type="submit" class="button button--edit" value="変更">
+        </form>
+        <form method="post" action="/memos/<%= @memo['id'] %>">
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" class="button button--delete" value="削除">
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
