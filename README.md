@@ -15,7 +15,7 @@ git checkout development
 ### セットアップ
 
 ```bash
-./setup.sh
+./bin/setup.sh
 ```
 
 ### 起動
