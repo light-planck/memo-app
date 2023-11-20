@@ -30,6 +30,12 @@ psql -U${USER} postgres
 postgres=# create user postgres with SUPERUSER; // postgresユーザーの作成
 ```
 
+DBとテーブルの作成
+
+```bash
+./bin/setup_db.sh
+```
+
 参考: <https://qiita.com/ksh-fthr/items/b86ba53f8f0bccfd7753>
 
 ### 起動
