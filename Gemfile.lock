@@ -31,6 +31,7 @@ GEM
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
     crass (1.0.6)
+    dotenv (2.8.1)
     drb (2.1.1)
       ruby2_keywords
     erb_lint (0.5.0)
@@ -121,6 +122,7 @@ PLATFORMS
   arm64-darwin-22
 
 DEPENDENCIES
+  dotenv
   erb_lint
   pg
   puma
