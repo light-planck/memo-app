@@ -26,8 +26,11 @@ DBのユーザーとしてpostgresを作成する。
 ```bash
 brew services start postgresql  // DBの自動起動
 psql -U${USER} postgres
-create user postgres with SUPERUSER; // postgresユーザーの作成
+
+postgres=# create user postgres with SUPERUSER; // postgresユーザーの作成
 ```
+
+参考: <https://qiita.com/ksh-fthr/items/b86ba53f8f0bccfd7753>
 
 ### 起動
 
