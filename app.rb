@@ -74,8 +74,8 @@ ensure
 end
 
 def fetch_memo(id)
-  memos = load_memos
-  memos.find { |memo| memo['id'] == id }
+  result = db_connection.exec('SELECT * FROM memos WHERE id = $1', [id])
+  result.map { |row| { 'id' => row['id'], 'title' => row['title'], 'content' => row['content'] } }.first
 end
 
 def write_memo(id:, title:, content:)
