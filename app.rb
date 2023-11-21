@@ -48,7 +48,7 @@ patch '/memos/:id' do
   title = params[:title]
   content = params[:content]
 
-  update_memo(id: id, title: title, content: content)
+  update_memo(id:, title:, content:)
   redirect to("/memos/#{id}")
 end
 
@@ -61,7 +61,7 @@ post '/memos' do
   title = params[:title]
   content = params[:content]
 
-  write_memo(id: id, title: title, content: content)
+  write_memo(id:, title:, content:)
   redirect to('/memos')
 end
 
