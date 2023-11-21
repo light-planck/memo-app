@@ -66,11 +66,8 @@ post '/memos' do
 end
 
 def load_memos
-  connection = db_connection
-  result = connection.exec('SELECT * FROM memos')
+  result = db_connection.exec('SELECT * FROM memos')
   result.map { |row| { 'id' => row['id'], 'title' => row['title'], 'content' => row['content'] } }
-ensure
-  connection&.close
 end
 
 def fetch_memo(id)
