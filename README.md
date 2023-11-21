@@ -15,6 +15,10 @@ git checkout development
 ### セットアップ
 
 ```bash
+mv .env.sample .env
+```
+
+```bash
 ./bin/setup.sh
 ```
 
